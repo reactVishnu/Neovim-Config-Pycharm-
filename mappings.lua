@@ -24,11 +24,13 @@ M.general = {
     ["<C-d>"] = { function() vim.cmd('normal yyp') end, "Duplicate the line" },
     ["<C-y>"] = { function() vim.cmd('normal dd') end, "Delete a line" },
     ["<C-c>"] = { function() vim.cmd('normal yy') end, "Copy the line" },
+    ["<C-s>"] = { function() vim.cmd('w') end, "Save file" },
   },
     v = {
     [">"] = { ">gv", "indent"},
     ["<C-c>"] = {"y", "Copying the Content."},
     ["<C-x>"] = {"d", "Cut the selected text"},
+    ["<BS>"] = {"x", "Delete the selected line"}
   },
 }
 
