@@ -57,8 +57,22 @@ local plugins = {
       require "custom.configs.none-ls.lua"
     end,
   },
-
-  -- To make a plugin not be loaded
+  { "folke/neodev.nvim", opts = {} },
+  { import = "custom.configs.vishnu.swenv" },
+  { import = "custom.configs.vishnu.zen-mode" },
+  { import = "custom.configs.vishnu.searchbox" },
+  { import = "custom.configs.vishnu.project" },
+  { import = "custom.configs.vishnu.ufo-statuscol", enabled = false },
+  { import = "custom.configs.vishnu.tagbar"},
+  { import = "custom.configs.vishnu.venv-select"},
+  { import = "custom.configs.vishnu.coderunner"},
+  { import = "custom.configs.vishnu.polygot"},
+  { import = "custom.configs.vishnu.autosession" },
+  { import = "custom.configs.vishnu.pdf-live" },
+  { import = "custom.configs.vishnu.md-preview"},
+  { import = "custom.configs.vishnu.codewindow" }
+  -- { import = "custom.configs.vishnu.coc-plugin"},
+    -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
