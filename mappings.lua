@@ -1,6 +1,6 @@
 ---@type MappingsTable
 local M = {}
-
+-- local cmp = require "cmp"
 M.general = {
   n = {
     ["<C-a>"] = { "ggVG", "select all text" },
@@ -22,9 +22,9 @@ M.general = {
     ["<C-d>"] = { function() vim.cmd('normal yyp') end, "Duplicate the line" },
     ["<C-y>"] = { function() vim.cmd('normal dd') end, "Delete a line" },
     ["<C-c>"] = { function() vim.cmd('normal yy') end, "Copy the line" },
-    -- ["<C-H>"] = { function() vim.cmd('insert <C-w>') end, "Delete a whole word" },
-    ["<C-H>"] = { function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>', true, true, true), 'n', true) end, "Delete a whole word" },
     ["<C-s>"] = { function() vim.cmd('w') end, "Save file" },
+    ["<C-f>"] = { function() vim.cmd('o') end, "Move to the next line" },
+    -- ["<C-H>"] = { function() vim.cmd('insert <C-w>') end, "Delete the word" },
   },
     v = {
     [">"] = { ">gv", "indent"},
@@ -42,6 +42,8 @@ M.comment = {
     [""] = {
       function()
         require("Comment.api").toggle.linewise.current()
+        -- vim.cmd([[startinsert]])
+        vim.cmd([[execute "normal! A"]])
       end,
       "Toggle comment",
     },
@@ -49,7 +51,7 @@ M.comment = {
 
   v = {
     [""] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>A",
       "Toggle comment",
     },
   },
@@ -58,7 +60,9 @@ M.comment = {
     [""] = {
       function()
         require("Comment.api").toggle.linewise.current()
-      end
+        vim.api.nvim_input('<ESC>A')
+      end,
+      "Toggle Comment"
     }
   }
 }

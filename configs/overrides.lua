@@ -1,5 +1,15 @@
 local M = {}
 
+local cmp_ok, cmp = pcall(require, "cmp")
+if cmp_ok then
+  M.cmp = {
+    mapping = {
+      ["<Up>"] = cmp.mapping.select_prev_item(),
+      ["<Down>"] = cmp.mapping.select_next_item(),
+    },
+  }
+end
+
 M.treesitter = {
   ensure_installed = {
     "vim",

@@ -21,13 +21,27 @@ function Switch()
 
 end
 
-
 vim.api.nvim_set_keymap('n', '<F9>', ':w<CR>:RunFile<CR>:lua Switch()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>.', ':RunClose<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('i', '<F9>', '<Esc>:w<CR>:RunFile<CR>:lua Switch()<CR>', { noremap = true, silent = false })
 
+-- vim.api.nvim_set_keymap('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<CR>', '<Esc>$A<CR>', { noremap = true, silent = true })
+
 vim.g.tagbar_ctags_bin = "C:\\Users\\vishn\\scoop\\shims\\ctags.exe"  -- Windows
 
 -- Use SumatraPDF as the PDF viewer
-vim.g.nvchad_open_pdf_command = 'silent !start C:\\Users\\vishn\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe'
+-- vim.g.nvchad_open_pdf_command = 'silent !start C:\\Users\\vishn\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe'
+
+
+-- Define a function to delete the previous word
+-- function Delete_previous_word()
+--     vim.cmd('normal! db')
+-- end
+--
+-- -- Map Ctrl + Backspace to delete the previous word
+-- vim.api.nvim_set_keymap('i', '<C-H>', '<Cmd>lua Delete_previous_word()<CR>', { noremap = true, silent = true })
+
+-- Map Ctrl + w to delete the previous word
+-- vim.api.nvim_set_keymap('i', '<C-w>', '<Cmd>lua delete_previous_word()<CR>', { noremap = true, silent = true })
 

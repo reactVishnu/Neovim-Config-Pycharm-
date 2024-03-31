@@ -12,6 +12,10 @@ local plugins = {
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp,
+  },
 
   -- override plugin configs
   {
@@ -71,7 +75,8 @@ local plugins = {
   { import = "custom.configs.vishnu.pdf-live" },
   { import = "custom.configs.vishnu.md-preview"},
   { import = "custom.configs.vishnu.codewindow" },
-  { import = "custom.configs.vishnu.harpoon"}
+  { import = "custom.configs.vishnu.harpoon"},
+  { import = "custom.configs.vishnu.undotree"}
   -- { import = "custom.configs.vishnu.coc-plugin"},
     -- To make a plugin not be loaded
   -- {
