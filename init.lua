@@ -44,4 +44,10 @@ vim.g.tagbar_ctags_bin = "C:\\Users\\vishn\\scoop\\shims\\ctags.exe"  -- Windows
 
 -- Map Ctrl + w to delete the previous word
 -- vim.api.nvim_set_keymap('i', '<C-w>', '<Cmd>lua delete_previous_word()<CR>', { noremap = true, silent = true })
+vim.api.nvim_exec([[
+  augroup TerminalMappings
+    autocmd!
+    autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-n>
+  augroup END
+]], false)
 

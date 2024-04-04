@@ -1,4 +1,4 @@
-return {
-  "sheerun/vim-polyglot",
-  event = "VeryLazy"
-}
+-- return {
+--   "sheerun/vim-polyglot",
+--   event = "VeryLazy"
+-- }
