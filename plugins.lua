@@ -71,6 +71,7 @@ local plugins = {
   { import = "custom.configs.vishnu.autosession" },
   { import = "custom.configs.vishnu.md-preview" },
   { import = "custom.configs.vishnu.harpoon" },
+  { import = "custom.configs.vishnu.autosave" },
   -- { import = "custom.configs.vishnu.coc-plugin"},
   -- To make a plugin not be loaded
   -- {
