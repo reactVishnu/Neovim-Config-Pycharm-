@@ -1,4 +1,11 @@
+-- Lua
 return {
-  "pocco81/auto-save.nvim",
-  event = { "VeryLazy" },
+  "0x00-ketsu/autosave.nvim",
+  config = function()
+    require("autosave").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end,
 }
