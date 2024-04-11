@@ -14,6 +14,12 @@ M.general = {
       end,
       "formatting",
       },
+    ["<leader>tt"] = {
+      function()
+        require("base46").toggle_transparency()
+      end,
+      "Toggle transparency",
+    },
     },
   i = {
     ["<C-a>"] = { function() vim.cmd('normal ggVG') end, "Select all text" },

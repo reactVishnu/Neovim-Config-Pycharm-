@@ -1,11 +1,11 @@
--- Lua
 return {
-  "0x00-ketsu/autosave.nvim",
+  "okuuva/auto-save.nvim",
+  cmd = "ASToggle", -- optional for lazy loading on command
+  event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+  keys = {
+    { "<leader>sa", ":ASToggle<CR>", desc = "Toggle auto-save" },
+  },
   config = function()
-    require("autosave").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    require("auto-save").setup { enabled = false }
   end,
 }

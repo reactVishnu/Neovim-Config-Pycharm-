@@ -5,8 +5,8 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "catppuccin",
-  theme_toggle = { "catppuccin", "one_light" },
+  theme = "ayu_dark",
+  theme_toggle = { "ayu_dark", "one_light" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,
@@ -17,7 +17,7 @@ M.plugins = "custom.plugins"
 -- check core.mappings for table structure
 M.mappings = require "custom.mappings"
 vim.api.nvim_set_keymap('i', '<C-BS>', '<C-W>', {noremap = true})
-vim.api.nvim_set_keymap('i', '<C-Del>', '<Esc>ldwi', {noremap = true})
+vim.api.nvim_set_keymap('i', '<C-Del>', '<Esc>ldwha', {noremap = true})
 vim.api.nvim_set_keymap('i', '<S-Left>', '<Esc>v', {noremap = true})
 vim.api.nvim_set_keymap('i', '<S-Right>', '<Esc>v', {noremap = true})
 vim.api.nvim_set_keymap('i', '<S-Up>', '<Esc>vk', {noremap = true})
