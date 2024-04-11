@@ -26,17 +26,15 @@ M.general = {
     ["<A-Up>"] = { function() vim.cmd('normal ddkP') end, "Move one line up" },
     ["<A-Down>"] = { function() vim.cmd('normal ddjP') end, "Move one line down" },
     ["<C-d>"] = { function() vim.cmd('normal yyp') end, "Duplicate the line" },
-    ["<C-y>"] = { function() vim.cmd('normal dd') end, "Delete a line" },
+    ["<C-y>"] = { function() vim.cmd('normal "_dd') end, "Delete a line" },
     ["<C-c>"] = { function() vim.cmd('normal yy') end, "Copy the line" },
     ["<C-s>"] = { function() vim.cmd('w') end, "Save file" },
-    ["<C-f>"] = { function() vim.cmd('o') end, "Move to the next line" },
-    -- ["<C-H>"] = { function() vim.cmd('insert <C-w>') end, "Delete the word" },
   },
     v = {
     [">"] = { ">gv", "indent"},
     ["<C-c>"] = {"y", "Copying the Content."},
     ["<C-x>"] = {"d", "Cut the selected text"},
-    ["<BS>"] = {'"_d', "Delete the selected line"}
+    ["<BS>"] = {'"_x', "Delete the selected line"}
   },
 }
 
