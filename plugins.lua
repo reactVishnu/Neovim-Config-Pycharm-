@@ -60,6 +60,25 @@ local plugins = {
       require "custom.configs.none-ls.lua"
     end,
   },
+  {
+   "nvim-tree/nvim-web-devicons",
+    opts = function()
+      return { override = require "nvchad.icons.devicons",
+        override_by_extension = {
+          ["xit"] = {
+          icon = "⌛",
+          color = "#81e043",
+          name = "Xit"
+          }
+        },
+      }
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "devicons")
+      require("nvim-web-devicons").setup(opts)
+      -- require "custom.configs.webdevicon"
+    end,
+  },
   { "folke/neodev.nvim", opts = {} },
   { import = "custom.configs.vishnu.zen-mode" },
   { import = "custom.configs.vishnu.searchbox" },
@@ -72,7 +91,10 @@ local plugins = {
   { import = "custom.configs.vishnu.md-preview" },
   { import = "custom.configs.vishnu.harpoon" },
   { import = "custom.configs.vishnu.autosave" },
+  { import = "custom.configs.vishnu.xit"},
+  { import = "custom.configs.vishnu.nvim-surround"}
   -- { import = "custom.configs.vishnu.coc-plugin"},
+  --
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

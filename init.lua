@@ -52,3 +52,8 @@ vim.api.nvim_exec(
   false
 )
 vim.api.nvim_set_keymap("n", "<leader>sa", ":ASToggle<CR>", {})
+vim.opt.relativenumber = true
+vim.api.nvim_set_keymap('v', '"', [[:s/\%V\<\(\w\+\)\>/"\1"/ge<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '(', [[:s/\%V\<\(\w\+\)\>/(\1)/ge<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '{', [[:s/\%V\<\(\w\+\)\>/{\1}/ge<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap('v', '[', [[:s/\%V\<\(\w\+\)\>/[\1]/ge<CR>]], {noremap = true, silent = true})

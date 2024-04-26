@@ -105,6 +105,24 @@ M.searchbox = {
   },
 }
 
+M.gitsigns = {
+  plugin = true,
+  n = {
+    ["<leader>ga"] = {
+      function()
+        require('gitsigns').attach()
+      end,
+      "Attach gitsigns"
+    },
+     ["<leader>gd"] = {
+      function()
+        require('gitsigns').detach()
+      end,
+      "Deatach gitsigns"
+    },
+  }
+}
+
 -- M.tagbar = {
 --   plugin = true,
 --   n = {
