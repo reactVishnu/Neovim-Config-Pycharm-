@@ -27,7 +27,7 @@ vim.api.nvim_set_keymap("i", "<F9>", "<Esc>:w<CR>:RunFile<CR>:lua Switch()<CR>",
 -- vim.api.nvim_set_keymap('i', '<C-H>', '<C-w>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('i', '<CR>', '<Esc>$A<CR>', { noremap = true, silent = true })
 
-vim.g.tagbar_ctags_bin = "C:\\Users\\vishn\\scoop\\shims\\ctags.exe" -- Windows
+-- vim.g.tagbar_ctags_bin = "C:\\Users\\vishn\\scoop\\shims\\ctags.exe" -- Windows
 
 -- Use SumatraPDF as the PDF viewer
 -- vim.g.nvchad_open_pdf_command = 'silent !start C:\\Users\\vishn\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe'
@@ -51,4 +51,6 @@ vim.api.nvim_exec(
 ]],
   false
 )
-vim.api.nvim_set_keymap("n", "<leader>sa", ":ASToggle<CR>", {})
+vim.opt.relativenumber = true
+vim.api.nvim_set_keymap("v", "<A-Down>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<A-Up>", ":m '>-2<CR>gv=gv", { noremap = true, silent = true })
