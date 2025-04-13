@@ -4,7 +4,7 @@ local M = {}
 M.general = {
   n = {
     ["<C-a>"] = { "ggVG", "select all text" },
-    ["<leader>re"] = { ":e!", "Refresh the current buffer"},
+    ["<leader>re"] = { ":e! <CR>", "Refresh the current buffer"},
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<C-b>"] = { ":vsplit <CR>", "Sliting the buffer vertically" },
     ["<leader>,"] = { ":q! <CR>", "Exiting the nvim without saving" },
