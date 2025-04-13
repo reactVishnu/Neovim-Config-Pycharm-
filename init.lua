@@ -53,4 +53,6 @@ vim.api.nvim_exec(
 )
 vim.opt.relativenumber = true
 vim.api.nvim_set_keymap("v", "<A-Down>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<A-Up>", ":m '>-2<CR>gv=gv", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("v", "<A-Up>", ":m '>-2<CR>gv=gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<A-Up>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
