@@ -1,93 +1,58 @@
 return {
   "kevinhwang91/nvim-ufo",
-  event = "VimEnter",
-  init = function()
-    vim.o.foldcolumn = "auto"
-    vim.o.foldlevel = 99 -- Using ufo provider need a large value
-    vim.o.foldlevelstart = 99
-    vim.o.foldnestmax = 0
-    vim.o.foldenable = true
-    vim.o.foldmethod = "indent"
-    vim.opt.fillchars = {
-      fold = " ",
-      foldopen = "",
-      foldsep = " ",
-      foldclose = "",
-      stl = " ",
-      eob = " ",
-    }
-  end,
   dependencies = {
     "kevinhwang91/promise-async",
-    {
-      "luukvbaal/statuscol.nvim",
-      opts = function()
-        local builtin = require "statuscol.builtin"
-        return {
-          relculright = true,
-          bt_ignore = { "nofile", "prompt", "terminal", "packer" },
-          ft_ignore = {
-            "NvimTree",
-            "dashboard",
-            "nvcheatsheet",
-            "dapui_watches",
-            "dap-repl",
-            "dapui_console",
-            "dapui_stacks",
-            "dapui_breakpoints",
-            "dapui_scopes",
-            "help",
-            "vim",
-            "alpha",
-            "dashboard",
-            "neo-tree",
-            "Trouble",
-            "noice",
-            "lazy",
-            "toggleterm",
-          },
-          segments = {
-            -- Segment: Add padding
-            {
-              text = { " " },
-            },
-            -- Segment: Fold Column
-            { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
-            -- Segment: Add padding
-            {
-              text = { " " },
-            },
-            -- Segment : Show signs with one character width
-            {
-              sign = {
-                name = { ".*" },
-                maxwidth = 1,
-                colwidth = 1,
-              },
-              auto = true,
-              click = "v:lua.ScSa",
-            },
-            -- Segment: Show line number
-            {
-              text = { " ", " ", builtin.lnumfunc, " " },
-              click = "v:lua.ScLa",
-              condition = { true, builtin.not_empty },
-            },
-            -- Segment: Add padding
-            {
-              text = { " " },
-              hl = "Normal",
-              condition = { true, builtin.not_empty },
-            },
-          },
-        }
+  },
+  lazy = false,
+  config = function()
+    -- Fold settings
+    vim.o.foldcolumn = "0" -- '0' is default
+    vim.o.foldlevel = 99   -- Using ufo provider needs high value
+    vim.o.foldlevelstart = 99
+    vim.o.foldenable = true
+
+    -- Setup ufo
+    require("ufo").setup({
+      provider_selector = function(bufnr, filetype, buftype)
+        return { "treesitter", "indent" }
       end,
-    },
-  },
-  opts = {
-    close_fold_kinds = { "imports" },
-    provider_selector = function()
-      return { "treesitter", "indent" }
-    end,
-  },
+      fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
+        local newVirtText = {}
+        local suffix = (" 󰁂 %d "):format(endLnum - lnum)
+        local sufWidth = vim.fn.strdisplaywidth(suffix)
+        local targetWidth = width - sufWidth
+        local curWidth = 0
+        for _, chunk in ipairs(virtText) do
+          local chunkText = chunk[1]
+          local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+          if targetWidth > curWidth + chunkWidth then
+            table.insert(newVirtText, chunk)
+            curWidth = curWidth + chunkWidth
+          else
+            chunkText = truncate(chunkText, targetWidth - curWidth)
+            table.insert(newVirtText, { chunkText, chunk[2] })
+            break
+          end
+        end
+        table.insert(newVirtText, { suffix, "MoreMsg" })
+        return newVirtText
+      end,
+    })
+
+    -- Optional: LSP folding capability setup (for better folds)
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
+
+    -- Use this in your LSP setup
+    -- Example: require("lspconfig").tsserver.setup({ capabilities = capabilities })
+
+    -- Keymaps
+    vim.keymap.set("n", "zR", require("ufo").openAllFolds, { desc = "Open all folds (ufo)" })
+    vim.keymap.set("n", "zM", require("ufo").closeAllFolds, { desc = "Close all folds (ufo)" })
+    vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds, { desc = "Open all folds except certain kinds" })
+    vim.keymap.set("n", "zm", require("ufo").closeFoldsWith, { desc = "Close folds with level" })
+  end,
 }

@@ -63,7 +63,7 @@ local plugins = {
   { "folke/neodev.nvim", opts = {} },
   { import = "custom.configs.vishnu.zen-mode" },
   { import = "custom.configs.vishnu.searchbox" },
-  { import = "custom.configs.vishnu.ufo-statuscol", enabled = false },
+  { import = "custom.configs.vishnu.ufo-statuscol" },
   { import = "custom.configs.vishnu.tagbar" },
   { import = "custom.configs.vishnu.venv-select" },
   { import = "custom.configs.vishnu.coderunner" },
