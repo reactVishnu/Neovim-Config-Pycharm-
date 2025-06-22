@@ -187,4 +187,49 @@ M.gitsigns = {
 --   }
 -- }
 -- more keybinds!
+M.ufo = {
+  plugin = true,
+  n = {
+    ["<leader>z"] = {
+      function()
+        local ufo = require("ufo")
+        vim.g.ufo_fold_toggle = not vim.g.ufo_fold_toggle
+        if vim.g.ufo_fold_toggle then
+          ufo.closeAllFolds()
+        else
+          ufo.openAllFolds()
+        end
+      end,
+      "Toggle all folds (ufo)",
+    },
+    ["zR"] = {
+      function()
+        require("ufo").openAllFolds()
+      end,
+      "Open all folds (ufo)",
+    },
+    ["zM"] = {
+      function()
+        require("ufo").closeAllFolds()
+      end,
+      "Close all folds (ufo)",
+    },
+    ["zr"] = {
+      function()
+        require("ufo").openFoldsExceptKinds()
+      end,
+      "Open folds (except kinds)",
+    },
+    ["zm"] = {
+      function()
+        require("ufo").closeFoldsWith()
+      end,
+      "Close folds with level",
+    },
+    ["zo"] = { "zo", "Open current fold" },
+    ["zc"] = { "zc", "Close current fold" },
+  },
+}
+
+
 return M

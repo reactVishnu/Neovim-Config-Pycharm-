@@ -50,9 +50,5 @@ return {
     -- Example: require("lspconfig").tsserver.setup({ capabilities = capabilities })
 
     -- Keymaps
-    vim.keymap.set("n", "zR", require("ufo").openAllFolds, { desc = "Open all folds (ufo)" })
-    vim.keymap.set("n", "zM", require("ufo").closeAllFolds, { desc = "Close all folds (ufo)" })
-    vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds, { desc = "Open all folds except certain kinds" })
-    vim.keymap.set("n", "zm", require("ufo").closeFoldsWith, { desc = "Close folds with level" })
   end,
 }
